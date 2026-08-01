@@ -1,77 +1,44 @@
-import uuid
-
 from django.conf import settings
 from django.db import models
 
 
-class StudentProfile(models.Model):
-    id = models.UUIDField(
-        primary_key=True,
-        default=uuid.uuid4,
-        editable=False,
+class Student(models.Model):
+
+    STATUS_CHOICES = (
+        ("ACTIVE", "Active"),
+        ("COMPLETED", "Completed"),
+        ("EXPIRED", "Expired"),
+        ("SUSPENDED", "Suspended"),
     )
 
     user = models.OneToOneField(
         settings.AUTH_USER_MODEL,
         on_delete=models.CASCADE,
-        related_name="student_profile",
+        related_name="student",
     )
 
     student_id = models.CharField(
         max_length=20,
         unique=True,
-    )
-
-    date_of_birth = models.DateField(
-        blank=True,
-        null=True,
-    )
-
-    GENDER_CHOICES = (
-        ("MALE", "Male"),
-        ("FEMALE", "Female"),
-        ("OTHER", "Other"),
-    )
-
-    gender = models.CharField(
-        max_length=10,
-        choices=GENDER_CHOICES,
         blank=True,
     )
 
-    address = models.TextField(blank=True)
-
-    city = models.CharField(
+    batch_name = models.CharField(
         max_length=100,
-        blank=True,
     )
 
-    state = models.CharField(
+    mentor_name = models.CharField(
         max_length=100,
-        blank=True,
     )
 
-    country = models.CharField(
-        max_length=100,
-        default="India",
-    )
+    course_start_date = models.DateField()
 
-    pincode = models.CharField(
-        max_length=10,
-        blank=True,
-    )
+    course_end_date = models.DateField()
 
-    emergency_contact = models.CharField(
-        max_length=15,
-        blank=True,
-    )
-
-    joined_on = models.DateField(
-        auto_now_add=True,
-    )
-
-    is_active = models.BooleanField(
-        default=True,
+    status = models.CharField(
+        max_length=20,
+        choices=STATUS_CHOICES,
+        default="ACTIVE",
     )
 
     created_at = models.DateTimeField(
@@ -83,4 +50,18 @@ class StudentProfile(models.Model):
     )
 
     def __str__(self):
-        return f"{self.student_id} - {self.user.full_name}"
+        return f"{self.student_id} - {self.user.email}"
+
+def save(self, *args, **kwargs):
+
+    if not self.student_id:
+
+        last_student = Student.objects.order_by("-id").first()
+
+        if last_student:
+            last_number = int(last_student.student_id.replace("TA", ""))
+            self.student_id = f"TA{last_number + 1:06d}"
+        else:
+            self.student_id = "TA000001"
+
+    super().save(*args, **kwargs)

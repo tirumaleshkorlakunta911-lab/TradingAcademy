@@ -18,4 +18,14 @@ urlpatterns = [
         "api/payments/",
         include("apps.payments.api.urls"),
     ),
+
+    path(
+        "api/tips/",
+        include("apps.tips.api.urls"),
+    ),
+
+    path(
+        "api/students/",
+        include("apps.students.urls"),
+    ),
 ]

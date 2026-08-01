@@ -1,26 +1,26 @@
 from django.contrib import admin
 
-from .models import StudentProfile
+from .models import Student
 
 
-@admin.register(StudentProfile)
-class StudentProfileAdmin(admin.ModelAdmin):
+@admin.register(Student)
+class StudentAdmin(admin.ModelAdmin):
 
     list_display = (
         "student_id",
         "user",
-        "city",
-        "state",
-        "is_active",
-    )
-
-    list_filter = (
-        "is_active",
-        "state",
+        "batch_name",
+        "mentor_name",
+        "status",
+        "course_end_date",
     )
 
     search_fields = (
         "student_id",
-        "user__full_name",
         "user__email",
+    )
+
+    list_filter = (
+        "status",
+        "batch_name",
     )
