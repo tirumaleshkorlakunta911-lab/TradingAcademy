@@ -28,6 +28,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'corsheaders',
+    'apps.accounts',
+    'apps.students',
 ]
 
 MIDDLEWARE = [
@@ -112,3 +114,6 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
 STATIC_URL = 'static/'
+
+
+AUTH_USER_MODEL = "accounts.User"
