@@ -2,4 +2,5 @@ from django.apps import AppConfig
 
 
 class TipsConfig(AppConfig):
-    name = 'tips'
+    default_auto_field = "django.db.models.BigAutoField"
+    name = "apps.tips"

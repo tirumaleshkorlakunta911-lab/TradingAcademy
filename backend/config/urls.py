@@ -8,4 +8,14 @@ urlpatterns = [
         "api/accounts/",
         include("apps.accounts.api.urls"),
     ),
+
+    path(
+        "api/subscriptions/",
+        include("apps.subscriptions.api.urls"),
+    ),
+
+    path(
+        "api/payments/",
+        include("apps.payments.api.urls"),
+    ),
 ]

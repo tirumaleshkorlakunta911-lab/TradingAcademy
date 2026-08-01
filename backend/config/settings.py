@@ -1,6 +1,9 @@
 from pathlib import Path
 from decouple import config
 from datetime import timedelta
+import environ 
+env = environ.Env()
+environ.Env.read_env()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -31,8 +34,15 @@ INSTALLED_APPS = [
     "rest_framework_simplejwt.token_blacklist",
     'corsheaders',
 
-    'apps.accounts',
-    'apps.students',
+    "apps.accounts",
+    "apps.booking",
+    "apps.classes",
+    "apps.dashboard",
+    "apps.notifications",
+    "apps.payments",
+    "apps.students",
+    "apps.subscriptions",
+    "apps.tips",
 ]
 
 MIDDLEWARE = [
@@ -139,3 +149,6 @@ SIMPLE_JWT = {
     "BLACKLIST_AFTER_ROTATION": True,
     "UPDATE_LAST_LOGIN": True,
 }
+
+RAZORPAY_KEY_ID = env("RAZORPAY_KEY_ID", default="")
+RAZORPAY_KEY_SECRET = env("RAZORPAY_KEY_SECRET", default="")
