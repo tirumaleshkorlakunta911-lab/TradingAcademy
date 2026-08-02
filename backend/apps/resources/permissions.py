@@ -1,0 +1,1 @@
+from apps.students.permissions import IsStudent

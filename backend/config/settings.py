@@ -44,6 +44,10 @@ INSTALLED_APPS = [
     "apps.subscriptions",
     "apps.tips",
     "apps.common",
+    "apps.resources",
+    "apps.attendance",
+    "apps.recordings",
+    "apps.announcements",
 ]
 
 MIDDLEWARE = [
@@ -153,3 +157,7 @@ SIMPLE_JWT = {
 
 RAZORPAY_KEY_ID = env("RAZORPAY_KEY_ID", default="")
 RAZORPAY_KEY_SECRET = env("RAZORPAY_KEY_SECRET", default="")
+
+MEDIA_URL = "/media/"
+
+MEDIA_ROOT = BASE_DIR / "media"
