@@ -24,3 +24,7 @@ class StudentAdmin(admin.ModelAdmin):
         "status",
         "batch_name",
     )
+
+class Meta:
+    verbose_name = "Student"
+    verbose_name_plural = "Students"

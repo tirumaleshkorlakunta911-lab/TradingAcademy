@@ -64,3 +64,7 @@ class CourseResource(models.Model):
 
     def __str__(self):
         return self.title
+
+class Meta:
+    verbose_name = "Learning Resource"
+    verbose_name_plural = "Learning Resources"

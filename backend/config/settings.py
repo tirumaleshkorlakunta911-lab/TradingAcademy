@@ -24,6 +24,7 @@ ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
 # Application definition
 
 INSTALLED_APPS = [
+    "jazzmin",
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -50,6 +51,45 @@ INSTALLED_APPS = [
     "apps.announcements",
 ]
 
+
+JAZZMIN_SETTINGS = {
+
+    "site_title": "DS Trading Academy",
+
+    "site_header": "DS Trading Academy",
+
+    "site_brand": "DS Trading Academy",
+
+    "welcome_sign": "Welcome to DS Trading Academy Admin",
+
+    "copyright": "DS Trading Academy",
+
+    "site_logo": None,
+
+    "login_logo": None,
+
+    "show_sidebar": True,
+
+    "navigation_expanded": True,
+
+    "hide_apps": [],
+
+    "hide_models": [],
+
+    "icons": {
+        "accounts.User": "fas fa-user",
+        "students.Student": "fas fa-user-graduate",
+        "subscriptions.PremiumSubscription": "fas fa-crown",
+        "classes.LiveClass": "fas fa-video",
+        "attendance.Attendance": "fas fa-calendar-check",
+        "resources.Resource": "fas fa-book",
+        "recordings.Recording": "fas fa-play-circle",
+        "announcements.Announcement": "fas fa-bullhorn",
+        "notifications.Notification": "fas fa-bell",
+        "tips.TradingTip": "fas fa-chart-line",
+    },
+}
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'corsheaders.middleware.CorsMiddleware',
@@ -67,7 +107,7 @@ ROOT_URLCONF = 'config.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / "templates"],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

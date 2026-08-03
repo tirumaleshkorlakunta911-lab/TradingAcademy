@@ -102,3 +102,7 @@ class Tip(models.Model):
 
     def __str__(self):
         return f"{self.symbol} ({self.category})"
+
+class Meta:
+    verbose_name = "Trading Tip"
+    verbose_name_plural = "Trading Tips"

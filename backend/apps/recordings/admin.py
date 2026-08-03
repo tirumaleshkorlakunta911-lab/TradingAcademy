@@ -27,3 +27,7 @@ class RecordingAdmin(admin.ModelAdmin):
     ordering = (
         "-created_at",
     )
+
+class Meta:
+    verbose_name = "Class Recording"
+    verbose_name_plural = "Class Recordings"

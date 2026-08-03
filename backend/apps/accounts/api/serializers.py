@@ -28,17 +28,17 @@ class UserRegistrationSerializer(serializers.ModelSerializer):
                 {"confirm_password": "Passwords do not match."}
             )
 
-        if not attrs["accepted_risk"]:
+        if not attrs.get("accepted_risk", False):
             raise serializers.ValidationError(
                 {"accepted_risk": "Risk disclaimer must be accepted."}
             )
 
-        if not attrs["accepted_terms"]:
+        if not attrs.get("accepted_terms", False):
             raise serializers.ValidationError(
                 {"accepted_terms": "Terms & Conditions must be accepted."}
             )
 
-        if not attrs["accepted_privacy"]:
+        if not attrs.get("accepted_privacy", False):
             raise serializers.ValidationError(
                 {"accepted_privacy": "Privacy Policy must be accepted."}
             )

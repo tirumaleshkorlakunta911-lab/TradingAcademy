@@ -70,3 +70,7 @@ class LiveClass(models.Model):
 
     def __str__(self):
         return self.title
+
+class Meta:
+    verbose_name = "Live Class"
+    verbose_name_plural = "Live Classes"

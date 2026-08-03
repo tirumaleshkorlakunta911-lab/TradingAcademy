@@ -49,3 +49,7 @@ class Attendance(models.Model):
 
     def __str__(self):
         return f"{self.student.student_id} - {self.live_class.title}"
+
+class Meta:
+    verbose_name = "Attendance Record"
+    verbose_name_plural = "Attendance Records"

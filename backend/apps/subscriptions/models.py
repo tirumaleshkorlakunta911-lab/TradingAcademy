@@ -62,3 +62,7 @@ class PremiumSubscription(models.Model):
 
     def __str__(self):
         return f"{self.user.email} - Premium"
+
+class Meta:
+    verbose_name = "Premium Member"
+    verbose_name_plural = "Premium Members"
